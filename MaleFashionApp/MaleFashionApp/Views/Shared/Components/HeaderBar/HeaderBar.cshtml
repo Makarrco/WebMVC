@@ -1,0 +1,36 @@
+﻿@using MaleFashionApp.Entities
+
+
+<ul>
+    @foreach (Navigate oneParentNav in Model)
+    {
+        @if (oneParentNav.ParentId == null && oneParentNav.Childs.Count == 0)
+        {
+            <li><a href="@oneParentNav.Href">@oneParentNav.Title</a></li>
+        }
+        else
+        {
+            <li><a href="#">@oneParentNav.Title</a> 
+                <ul class="dropdown">
+                    @foreach (Navigate oneChild in oneParentNav.Childs)
+                    {
+                        <li><a href="@oneChild.Href">@oneChild.Title</a></li>
+                    }
+                </ul>
+            </li>
+        }
+        
+    }
+    @* <li><a href="./shop.html">Shop</a></li> *@
+    @* <li><a href="#">Pages</a> *@
+    @*     <ul class="dropdown"> *@
+    @*         <li><a href="/About">About Us</a></li> *@
+    @*         <li><a href="./shop-details.html">Shop Details</a></li> *@
+    @*         <li><a href="./shopping-cart.html">Shopping Cart</a></li> *@
+    @*         <li><a href="./checkout.html">Check Out</a></li> *@
+    @*         <li><a href="./blog-details.html">Blog Details</a></li> *@
+    @*     </ul> *@
+    @* </li> *@
+    @* <li><a href="./blog.html">Blog</a></li> *@
+    @* <li><a href="/About/ContactUs">Contacts</a></li> *@
+</ul>

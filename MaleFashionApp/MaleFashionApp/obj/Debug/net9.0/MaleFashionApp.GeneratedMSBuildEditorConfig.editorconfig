@@ -36,6 +36,42 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Rider/MaleFashionApp/MaleFashionApp/Views/Shared/Components/Copyright/Copyright.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ29weXJpZ2h0XENvcHlyaWdodC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Rider/MaleFashionApp/MaleFashionApp/Views/Shared/Components/FirstHeader/FirstHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRmlyc3RIZWFkZXJcRmlyc3RIZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Rider/MaleFashionApp/MaleFashionApp/Views/Shared/Components/HeaderBar/HeaderBar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSGVhZGVyQmFyXEhlYWRlckJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Rider/MaleFashionApp/MaleFashionApp/Views/Shared/Components/HeaderOptions/HeaderOptions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSGVhZGVyT3B0aW9uc1xIZWFkZXJPcHRpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Rider/MaleFashionApp/MaleFashionApp/Views/Shared/Components/LogoSite/LogoSite.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTG9nb1NpdGVcTG9nb1NpdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Rider/MaleFashionApp/MaleFashionApp/Views/Shared/Components/NewLetter/NewLetter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTmV3TGV0dGVyXE5ld0xldHRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Rider/MaleFashionApp/MaleFashionApp/Views/Shared/Components/Payment/Payment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUGF5bWVudFxQYXltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Rider/MaleFashionApp/MaleFashionApp/Views/Shared/Components/ShoppingTwo/ShoppingTwo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcU2hvcHBpbmdUd29cU2hvcHBpbmdUd28uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Rider/MaleFashionApp/MaleFashionApp/Views/Shared/Components/Shopping/Shopping.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcU2hvcHBpbmdcU2hvcHBpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Rider/MaleFashionApp/MaleFashionApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

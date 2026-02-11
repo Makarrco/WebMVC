@@ -54,3 +54,4 @@ D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\7y9zowsq0t-0x
 D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\g93d67bigk-1p2akdhp6j.gz
 D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\ho0w7j17bp-imk61bjssl.gz
 D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\uy6o8csu0m-3ajr5l1ur1.gz
+D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\MaleFashionApp.sourcelink.json

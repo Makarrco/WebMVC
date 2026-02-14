@@ -47,7 +47,7 @@ public class HeaderBarViewComponent : ViewComponent
         {
             Id = 5,
             Title = "Contacts",
-            Href = "/contacts",
+            Href = "/About/ContactUs",
             Order = 5,
             ParentId = null
         });

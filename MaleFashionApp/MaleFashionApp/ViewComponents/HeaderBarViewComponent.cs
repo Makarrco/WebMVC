@@ -52,41 +52,41 @@ public class HeaderBarViewComponent : ViewComponent
             ParentId = null
         });
         
-        _navigate[3].Childs.Add(new Navigate()
+        _navigate[2].Childs.Add(new Navigate()
         {
-            Id = 5,
+            Id = 6,
             Title = "About Us",
             Href = "/About",
             Order = 1,
             ParentId = 3
         });
-        _navigate[3].Childs.Add(new Navigate()
+        _navigate[2].Childs.Add(new Navigate()
         {
-            Id = 5,
+            Id = 7,
             Title = "Shop Details",
             Href = "/blog/shopdetails",
             Order = 2,
             ParentId = 3
         });
-        _navigate[3].Childs.Add(new Navigate()
+        _navigate[2].Childs.Add(new Navigate()
         {
-            Id = 5,
+            Id = 8,
             Title = "Shopping Cart",
             Href = "/blog/shopcart",
             Order = 3,
             ParentId = 3
         });
-        _navigate[3].Childs.Add(new Navigate()
+        _navigate[2].Childs.Add(new Navigate()
         {
-            Id = 5,
+            Id = 9,
             Title = "Check out",
             Href = "/blog/checkout",
             Order = 4,
             ParentId = 3
         });
-        _navigate[3].Childs.Add(new Navigate()
+        _navigate[2].Childs.Add(new Navigate()
         {
-            Id = 5,
+            Id = 10,
             Title = "Blog Details",
             Href = "/blog/blogdetails",
             Order = 5,

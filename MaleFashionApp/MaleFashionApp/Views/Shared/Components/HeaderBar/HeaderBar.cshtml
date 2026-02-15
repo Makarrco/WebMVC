@@ -1,36 +1,50 @@
 ﻿@using MaleFashionApp.Entities
-
+@using Microsoft.AspNetCore.Html
+@model IEnumerable<Navigate>
 
 <ul>
-    @foreach (Navigate oneParentNav in Model)
+    @foreach (var item in Model.OrderBy(x => x.Order))
     {
-        @if (oneParentNav.ParentId == null && oneParentNav.Childs.Count == 0)
+        @RenderMenuItem(item)
+    }
+</ul>
+
+@functions {
+
+    public IHtmlContent RenderMenuItem(Navigate item)
+    {
+        if (item.Childs != null && item.Childs.Any())
         {
-            <li><a href="@oneParentNav.Href">@oneParentNav.Title</a></li>
+            return BuildDropdown(item);
         }
         else
         {
-            <li><a href="#">@oneParentNav.Title</a> 
-                <ul class="dropdown">
-                    @foreach (Navigate oneChild in oneParentNav.Childs)
-                    {
-                        <li><a href="@oneChild.Href">@oneChild.Title</a></li>
-                    }
-                </ul>
-            </li>
+            return BuildSimpleLink(item);
         }
-        
     }
-    @* <li><a href="./shop.html">Shop</a></li> *@
-    @* <li><a href="#">Pages</a> *@
-    @*     <ul class="dropdown"> *@
-    @*         <li><a href="/About">About Us</a></li> *@
-    @*         <li><a href="./shop-details.html">Shop Details</a></li> *@
-    @*         <li><a href="./shopping-cart.html">Shopping Cart</a></li> *@
-    @*         <li><a href="./checkout.html">Check Out</a></li> *@
-    @*         <li><a href="./blog-details.html">Blog Details</a></li> *@
-    @*     </ul> *@
-    @* </li> *@
-    @* <li><a href="./blog.html">Blog</a></li> *@
-    @* <li><a href="/About/ContactUs">Contacts</a></li> *@
-</ul>
+
+    private IHtmlContent BuildSimpleLink(Navigate item)
+    {
+        return new HtmlString($"<li><a href='{item.Href}'>{item.Title}</a></li>");
+    }
+
+    private IHtmlContent BuildDropdown(Navigate item)
+    {
+        var childHtml = "";
+
+        foreach (var child in item.Childs.OrderBy(x => x.Order))
+        {
+            childHtml += $"<li><a href='{child.Href}'>{child.Title}</a></li>";
+        }
+
+        var html = $@"
+            <li>
+                <a href='{item.Href}'>{item.Title}</a>
+                <ul class='dropdown'>
+                    {childHtml}
+                </ul>
+            </li>";
+
+        return new HtmlString(html);
+    }
+}

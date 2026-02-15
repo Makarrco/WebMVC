@@ -39,7 +39,6 @@ D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\2fwlh96f1c-b8
 D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\w1j3i0bzzt-9yv4o884jf.gz
 D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\mal28n3ixv-a28q16vo32.gz
 D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\ap69fec8u7-g5put84p4p.gz
-D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\35csrwquw6-5i6qjq1g3o.gz
 D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\24l2upzxi1-no7mkvlg0c.gz
 D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\joqv7rc8pg-r9dtzxkrgl.gz
 D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\c9q95sipv1-dosqy3kf6t.gz
@@ -55,3 +54,5 @@ D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\g93d67bigk-1p
 D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\ho0w7j17bp-imk61bjssl.gz
 D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\uy6o8csu0m-3ajr5l1ur1.gz
 D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\MaleFashionApp.sourcelink.json
+D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\35csrwquw6-j1vfh68u43.gz
+D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\o98cl9zo19-b6e4esz3j1.gz

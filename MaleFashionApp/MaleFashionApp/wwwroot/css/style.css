@@ -3263,6 +3263,11 @@ ol {
 	text-align: left;
 	margin-bottom: 40px;
 }
+.input-error {
+	border-color: red !important;
+	box-shadow: 0 0 5px rgba(255,0,0,0.4);
+}
+
 
 .contact__text .section-title h2 {
 	font-size: 48px;

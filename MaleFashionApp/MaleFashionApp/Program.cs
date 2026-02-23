@@ -1,9 +1,24 @@
+using MaleFashionApp.DB;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDbContext<ClothingShopDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ClothingShopDbConnection")));
+    
+
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ClothingShopDbContext>();
+    context.Database.Migrate();
+    DbInitializer.Initialize(context);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

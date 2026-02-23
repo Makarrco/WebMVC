@@ -1,14 +1,33 @@
-﻿<div class="header__top__right">
+﻿@using MaleFashionApp.Entities
+
+@{
+    var headerLinks = (FirstHeaderViewModel)Model;
+}
+
+<div class="header__top__right">
     <div class="header__top__links">
-        <a href="#">Sign in</a>
-        <a href="#">FAQs</a>
+        <a href="#">@headerLinks.SignIn.Value</a>
+        <a href="#">@headerLinks.FAQ.Value</a>
     </div>
     <div class="header__top__hover">
-        <span>Usd <i class="arrow_carrot-down"></i></span>
-        <ul>
-            <li>USD</li>
-            <li>EUR</li>
-            <li>USD</li>
+        <span id="current-currency">@headerLinks.Currencies.FirstOrDefault()?.Value</span>
+        <i class="arrow_carrot-down"></i>
+        <ul id="currency-list">
+            @foreach (var currency in headerLinks.Currencies)
+            {
+                <li data-value="@currency.Value">@currency.Value</li>
+            }
         </ul>
     </div>
+
+    <script>
+        const listItems = document.querySelectorAll('#currency-list li');
+        const current = document.getElementById('current-currency');
+    
+        listItems.forEach(li => {
+            li.addEventListener('click', () => {
+                current.textContent = li.dataset.value;
+            });
+        });
+    </script>
 </div>

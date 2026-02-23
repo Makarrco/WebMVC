@@ -1,7 +1,12 @@
-﻿<h6>Shopping</h6>
+﻿
+@{
+    var shoppingViewModel = (ShoppingViewModel)Model;
+}
+
+<h6>@shoppingViewModel.Shopping.Value</h6>
 <ul>
-    <li><a href="#">Clothing Store</a></li>
-    <li><a href="#">Trending Shoes</a></li>
-    <li><a href="#">Accessories</a></li>
-    <li><a href="#">Sale</a></li>
+    <li><a href="#">@shoppingViewModel.ClothStore.Value</a></li>
+    <li><a href="#">@shoppingViewModel.TrendShoes.Value</a></li>
+    <li><a href="#">@shoppingViewModel.Accessories.Value</a></li>
+    <li><a href="#">@shoppingViewModel.Sales.Value</a></li>
 </ul>

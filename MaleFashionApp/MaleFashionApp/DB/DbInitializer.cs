@@ -18,9 +18,9 @@ public class DbInitializer
 
         SeedCategories(context);
         SeedTags(context);
-        SeedPostTags(context);
+        SeedPosts(context);          
         SeedPostCategories(context);
-        SeedPosts(context);
+        SeedPostTags(context);       
     }
 
     private static void SeedPosts(ClothingShopDbContext context)
@@ -503,7 +503,9 @@ public class DbInitializer
                 new Tag { Title = "Streetwear", Slug = "streetwear" },
                 new Tag { Title = "Minimal", Slug = "minimal" },
                 new Tag { Title = "Luxury", Slug = "luxury" },
-                new Tag { Title = "New Collection", Slug = "new-collection" }
+                new Tag { Title = "New Collection", Slug = "new-collection" },
+                new Tag { Title = "Sale", Slug = "sale" },                    
+                new Tag { Title = "Accessories", Slug = "accessories" }, 
             };
 
             context.Tags.AddRange(tags);
@@ -514,9 +516,6 @@ public class DbInitializer
     {
         if (!context.PostTags.Any())
         {
-            context.Database.OpenConnection();
-
-            context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Navigations ON");
 
             var postTags = new List<PostTags>()
             {
@@ -564,9 +563,7 @@ public class DbInitializer
 
             context.SaveChanges();
             
-            context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Navigations OFF");
             
-            context.Database.CloseConnection();
         }
     }
     

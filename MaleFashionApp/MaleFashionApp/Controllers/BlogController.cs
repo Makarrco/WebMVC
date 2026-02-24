@@ -1,5 +1,6 @@
 ﻿using MaleFashionApp.DB;
 using MaleFashionApp.Models;
+using MaleFashionApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MaleFashionApp.Controllers;
@@ -33,7 +34,7 @@ public class BlogController : Controller
         }
         else
         {
-            viewModel.Posts = _postModel.GetPosts(4, 0);
+            viewModel.Posts = _postModel.GetPosts(6, 0);
         }
         return View(viewModel);
     }

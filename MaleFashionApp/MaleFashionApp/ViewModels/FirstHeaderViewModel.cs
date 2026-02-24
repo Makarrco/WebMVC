@@ -1,6 +1,6 @@
 ﻿using MaleFashionApp.Entities;
 
-namespace MaleFashionApp.Models;
+namespace MaleFashionApp.ViewModels;
 
 public class FirstHeaderViewModel
 {

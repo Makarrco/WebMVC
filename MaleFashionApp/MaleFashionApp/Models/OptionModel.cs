@@ -70,7 +70,7 @@ public class OptionModel
     }
     public Option GetShopping()
     {
-        return GetOptionByName("Shopping");
+        return GetOptionByName("shopping_title");
     }
     public Option GetClothStore()
     {

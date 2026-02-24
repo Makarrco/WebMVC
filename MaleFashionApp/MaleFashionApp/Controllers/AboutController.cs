@@ -2,6 +2,7 @@
 using MaleFashionApp.DB;
 using MaleFashionApp.Entities;
 using MaleFashionApp.Models;
+using MaleFashionApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MaleFashionApp.Controllers;

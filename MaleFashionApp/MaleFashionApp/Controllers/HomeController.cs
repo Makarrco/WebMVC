@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using MaleFashionApp.Models;
+using MaleFashionApp.ViewModels;
 
 namespace MaleFashionApp.Controllers;
 

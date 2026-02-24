@@ -1,5 +1,6 @@
 ﻿using MaleFashionApp.DB;
 using MaleFashionApp.Models;
+using MaleFashionApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MaleFashionApp.ViewComponents;

@@ -1,4 +1,4 @@
-namespace MaleFashionApp.Models;
+namespace MaleFashionApp.ViewModels;
 
 public class ErrorViewModel
 {

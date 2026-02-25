@@ -1,5 +1,6 @@
 ﻿using MaleFashionApp.DB;
 using MaleFashionApp.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace MaleFashionApp.Models;
@@ -70,11 +71,16 @@ public class PostModel
         }
         
     
+    
 
     public Post? GetPostInfo(string slug)
     {
-        return _clothingDbContext.Posts.FirstOrDefault(
-            p => p.Slug.ToLower() == slug.ToLower() && p.Status == PostStatuses.Published
-        );
+        return _clothingDbContext.Posts
+            .Include(p => p.Tags)       
+            .Include(p => p.Categories)  
+            .FirstOrDefault(p =>
+                p.Slug.ToLower() == slug.ToLower() && 
+                p.Status == PostStatuses.Published
+            );
     }
 }

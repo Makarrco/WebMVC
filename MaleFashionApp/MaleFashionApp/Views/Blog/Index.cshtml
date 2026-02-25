@@ -38,9 +38,9 @@
                             {
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="blog__item">
-                                        <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-1.jpg"></div>
+                                        <div class="blog__item__pic set-bg" data-setbg="~/img/blog/blog-1.jpg"></div>
                                         <div class="blog__item__text">
-                                            <span><img src="@onePost.ImgSrc" alt="@onePost.ImgAlt">@onePost.Published</span>
+                                            <span><img src="~/@onePost.ImgSrc" alt="@onePost.ImgAlt">@onePost.Published</span>
                                             @* img/icon/calendar.png *@
                                             <h5>@onePost.Title</h5>
                                             <a href="/blog/GetOnePost?slug=@onePost.Slug">Read More</a>
@@ -59,9 +59,11 @@
                 
                 @* Search Input *@
                 <div class="shop__sidebar__search">
-                    <form action="#">
-                        <input type="text" placeholder="Search...">
-                        <button type="submit"><span class="icon_search"></span></button>
+                    <form method="get" action="/blog/index">
+                        <input type="text" name="search" placeholder="Search...">
+                        <button type="submit">
+                            <span class="icon_search"></span>
+                        </button>
                     </form>
                 </div>
                 

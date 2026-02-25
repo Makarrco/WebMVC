@@ -1539,7 +1539,7 @@ ol {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     border-color: #ccc;
-    color: #111;
+    color: #fff;
 }
 
 /* Active tag (optional for later) */

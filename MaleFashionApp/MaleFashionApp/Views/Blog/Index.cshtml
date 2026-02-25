@@ -57,36 +57,71 @@
             </div>
             <div class="col-3" data-aos="fade-up" data-aos-delay="100">
                 
-                @foreach (Category oneCat in viewModel.Categories)
-                {
-                    <div class="card">
-                        <div class="card-heading">
-                            <a data-toggle="collapse" data-target="#collapseTwo">@oneCat.Title</a>
-                        </div>
-                        <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
-                            <div class="card-body">
-                                <div class="shop__sidebar__brand">
-                                    <ul>
-                                        @foreach (Category childCat in oneCat.Childs)
-                                        {
-                                            <li><a href="#">@childCat.Title</a></li>
-                                        }
-                                    </ul>
+                @* Search Input *@
+                <div class="shop__sidebar__search">
+                    <form action="#">
+                        <input type="text" placeholder="Search...">
+                        <button type="submit"><span class="icon_search"></span></button>
+                    </form>
+                </div>
+                
+                @* Categories Rendering *@
+                <div class="shop__sidebar__accordion">
+                    <div class="accordion" id="accordionExample">
+
+                        @{
+                            int i = 0;
+                        }
+
+                        @foreach (Category oneCat in viewModel.Categories)
+                        {
+                            var collapseId = "collapseCat" + i;
+
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#@collapseId">
+                                        @oneCat.Title
+                                    </a>
+                                </div>
+
+                                <div id="@collapseId" class="collapse" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__brand">
+                                            <ul>
+                                                @foreach (Category childCat in oneCat.Childs)
+                                                {
+                                                    <li>
+                                                        <a href="/blog/index/category?=@childCat.Slug">@childCat.Title</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                }
-                
 
-                <div class="shop__sidebar__categories">
-                    <a data-toggle="collapse" data-target="#collapseOne">Tags</a>
-                    <ul class="nice-scroll">
-                        @foreach (Tag oneTag in viewModel.Tags)
-                        {
-                            <a class="tag-href" href="/blog/index?tag=@oneTag.Slug">@oneTag.Title</a>
+                            i++;
                         }
-                    </ul>
+
+                    </div>
+                </div>
+
+                @* Tags Rendering *@
+                <div class="shop__sidebar__categories">
+                    <div class="shop__sidebar__categories shop__sidebar__tags">
+                        <h5 class="sidebar-title">Tags</h5>
+
+                        <ul class="tag-list">
+                            @foreach (Tag oneTag in viewModel.Tags)
+                            {
+                                <li>
+                                    <a class="tag-item" href="/blog/index?tag=@oneTag.Slug">
+                                        @oneTag.Title
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
                 </div>
 
 

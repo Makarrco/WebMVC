@@ -1496,6 +1496,58 @@ ol {
 	padding-left: 10px;
 	padding-right: 15px;
 }
+/* ===== TAGS SIDEBAR ===== */
+
+.shop__sidebar__tags {
+    margin-top: 30px;
+}
+
+.sidebar-title {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    height: auto !important;
+    padding: 0;
+}
+
+.tag-list li {
+    list-style: none;
+}
+
+.tag-item {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid #e5e5e5;
+    color: #555;
+    text-decoration: none;
+    background: #fff;
+    transition: all 0.25s ease;
+}
+/* Hover Effect */
+.tag-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    border-color: #ccc;
+    color: #111;
+}
+
+/* Active tag (optional for later) */
+.tag-item.active {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
 
 /*---------------------
   Shop

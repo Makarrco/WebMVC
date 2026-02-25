@@ -1,5 +1,6 @@
 ﻿using MaleFashionApp.DB;
 using MaleFashionApp.Entities;
+using Microsoft.IdentityModel.Tokens;
 
 namespace MaleFashionApp.Models;
 
@@ -28,7 +29,8 @@ public class PostModel
                 on post.Id equals postTag.PostId
             join tag in _clothingDbContext.Tags 
                 on postTag.TagId equals tag.Id
-            where post.Slug == tagSlug && post.Status == PostStatuses.Published
+            where tag.Slug == tagSlug 
+                  && post.Status == PostStatuses.Published
                 orderby post.Published
                 select post;
         return posts.ToList();
@@ -45,5 +47,34 @@ public class PostModel
             orderby post.Published
             select post;
         return posts.ToList();
+    }
+
+    public List<Post> SearchPosts(string search)
+    {
+        if (search.IsNullOrEmpty())
+            return new List<Post>();
+
+            search = search.ToLower();
+
+            var posts = _clothingDbContext.Posts
+                .Where(p =>
+                    p.Status == PostStatuses.Published &&
+                    (
+                        p.Title.ToLower().Contains(search) ||
+                        p.Content.ToLower().Contains(search)
+                    )
+                )
+                .OrderBy(p => p.Published)
+                .ToList();
+            return posts;
+        }
+        
+    
+
+    public Post? GetPostInfo(string slug)
+    {
+        return _clothingDbContext.Posts.FirstOrDefault(
+            p => p.Slug.ToLower() == slug.ToLower() && p.Status == PostStatuses.Published
+        );
     }
 }

@@ -1522,6 +1522,7 @@ ol {
     list-style: none;
 }
 
+/* BASE TAG STYLE */
 .tag-item {
     display: inline-block;
     padding: 8px 16px;
@@ -1533,22 +1534,43 @@ ol {
     text-decoration: none;
     background: #fff;
     transition: all 0.25s ease;
-}
-/* Hover Effect */
-.tag-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    border-color: #ccc;
-    color: #fff;
+
+    /* Required for animation */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
-/* Active tag (optional for later) */
+/* Animated fill layer */
+.tag-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #000;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+    z-index: -1;
+}
+
+/* Hover animation */
+.tag-item:hover::before {
+    transform: scaleX(1);
+}
+
+/* Hover text + lift */
+.tag-item:hover {
+    color: #fff;
+    border-color: #000;
+    transform: translateY(-2px);
+}
+
+/* Active tag (optional for filtering later) */
 .tag-item.active {
     background: #111;
     color: #fff;
     border-color: #111;
 }
-
 /*---------------------
   Shop
 -----------------------*/

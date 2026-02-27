@@ -9,6 +9,9 @@ public class BlogViewModel
     public List<Category> Categories { get; set; } = new List<Category>();
 
     public List<Tag> Tags { get; set; } = new List<Tag>();
+    
+    public int CurrentPage { get; set; }
+    public int TotalPages { get; set; }
 
     // public Pagination { get; set }
 }

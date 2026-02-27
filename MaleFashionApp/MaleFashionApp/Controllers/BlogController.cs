@@ -21,25 +21,53 @@ public class BlogController : Controller
         _postModel = new PostModel(clothingDbContext);
     }
     [HttpGet]
-    public IActionResult Index(string? category, string? tag, string? search)
+    public IActionResult Index(string? category, string? tag, string? search, int page = 1)
     {
+        int pageSize = 6;
+        int offset = (page - 1) * pageSize;
+
         BlogViewModel viewModel = new BlogViewModel();
         viewModel.Tags = _tagModel.GetNotEmptytagList();
         viewModel.Categories = _categoryModel.GetCategoryTree();
+
+        int totalPosts = 0;
+
         if (category != null)
         {
-            viewModel.Posts = _postModel.GetPostsByCategorySlug(category);
-        } else if (tag != null)
+            viewModel.Posts = _postModel.GetPostsByCategorySlug(category)
+                .Skip(offset)
+                .Take(pageSize)
+                .ToList();
+
+            totalPosts = _postModel.GetTotalByCategory(category);
+        }
+        else if (tag != null)
         {
-            viewModel.Posts = _postModel.GetPostsByTagSlug(tag);
-        }else if (search != null)
+            viewModel.Posts = _postModel.GetPostsByTagSlug(tag)
+                .Skip(offset)
+                .Take(pageSize)
+                .ToList();
+
+            totalPosts = _postModel.GetTotalByTag(tag);
+        }
+        else if (search != null)
         {
-            viewModel.Posts = _postModel.SearchPosts(search);
+            viewModel.Posts = _postModel.SearchPosts(search)
+                .Skip(offset)
+                .Take(pageSize)
+                .ToList();
+
+            totalPosts = _postModel.GetTotalBySearch(search);
         }
         else
         {
-            viewModel.Posts = _postModel.GetPosts(6, 0);
+            viewModel.Posts = _postModel.GetPosts(pageSize, offset);
+            totalPosts = _postModel.GetTotalPostCount();
         }
+
+        viewModel.CurrentPage = page;
+        viewModel.TotalPages = (int)Math.Ceiling((double)totalPosts / pageSize);
+
         return View(viewModel);
     }
 

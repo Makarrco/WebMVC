@@ -68,8 +68,7 @@ public class PostModel
                 .OrderBy(p => p.Published)
                 .ToList();
             return posts;
-        }
-        
+    }
     
     
 
@@ -82,5 +81,38 @@ public class PostModel
                 p.Slug.ToLower() == slug.ToLower() && 
                 p.Status == PostStatuses.Published
             );
+    }
+    
+    public int GetTotalPostCount()
+    {
+        return _clothingDbContext.Posts
+            .Count(p => p.Status == PostStatuses.Published);
+    }
+
+    public int GetTotalByTag(string tagSlug)
+    {
+        return (from post in _clothingDbContext.Posts
+            join postTag in _clothingDbContext.PostTags on post.Id equals postTag.PostId
+            join tag in _clothingDbContext.Tags on postTag.TagId equals tag.Id
+            where tag.Slug == tagSlug && post.Status == PostStatuses.Published
+            select post).Count();
+    }
+
+    public int GetTotalByCategory(string categorySlug)
+    {
+        return (from post in _clothingDbContext.Posts
+            join pc in _clothingDbContext.PostCategories on post.Id equals pc.PostId
+            join cat in _clothingDbContext.Categories on pc.CategoryId equals cat.Id
+            where cat.Slug == categorySlug && post.Status == PostStatuses.Published
+            select post).Count();
+    }
+
+    public int GetTotalBySearch(string search)
+    {
+        search = search.ToLower();
+
+        return _clothingDbContext.Posts.Count(p =>
+            p.Status == PostStatuses.Published &&
+            (p.Title.ToLower().Contains(search) || p.Content.ToLower().Contains(search)));
     }
 }

@@ -107,6 +107,20 @@ public class OptionModel
     {
         return GetOptionByName("Return & Exchanges");
     }
+    public Option GetSearch()
+    {
+        return GetOptionByName("Search");
+    }
+
+    public Option GetWishlist()
+    {
+        return GetOptionByName("Wishlist");
+    }
+
+    public Option GetCart()
+    {
+        return GetOptionByName("Cart");
+    }
     
     public IEnumerable<Option> GetBarOptions()
     {

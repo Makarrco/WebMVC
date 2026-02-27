@@ -102,177 +102,250 @@ public class DbInitializer
     }
 
     private static void SeedOptions(ClothingShopDbContext context)
-    {
-        if (!context.Options.Any())
         {
-            var options = new List<Option>()
+            void AddOptionIfMissing(Option option)
             {
-
-                new Option()
+                if (!context.Options.Any(o => o.Name == option.Name))
                 {
-                    IsSystem = true,
-                    Name = "title",
-                    Value = "Male Fashion",
-                    Order = 1,
-                },
-                new Option()
-                {
-                    IsSystem = true,
-                    Name = "logo",
-                    Value = "img/logo.png"
-                },
-                new Option()
-                {
-                    IsSystem = false,
-                    Name = "description",
-                    Relation = "header",
-                    Value = "Free shipping, 30-day return or refund guarantee.",
-                },
-                new Option()
-                {
-                    IsSystem = true,
-                    Name = "Sign-in",
-                    Relation = "header__top__links",
-                    Value = "Sign In"
-                },
-                new Option()
-                {
-                    IsSystem = true,
-                    Name = "FAQ",
-                    Relation = "header__top__links",
-                    Value = "FAQ",
-                },
-                new Option()
-                {
-                    IsSystem = true,
-                    Name = "Currency",
-                    Value = "Currency",
-                },
-                new Option
-                {
-                    Name = "USD",
-                    Value = "USD",
-                    Relation = "currency",
-                    Order = 1,
-                    IsSystem = true
-                },
-                new Option
-                {
-                    Name = "EUR",
-                    Value = "EUR",
-                    Relation = "currency",
-                    Order = 2,
-                    IsSystem = true
-                },
-                new Option
-                {
-                    Name = "GBP",
-                    Value = "GBP",
-                    Relation = "currency",
-                    Order = 3,
-                    IsSystem = true
-                },
-                new Option()
-                {
-                    IsSystem = true,
-                    Relation = "payment",
-                    Name = "payImage",
-                    Value  = "img/payment.png"
-                },
-                new Option()
-                {
-                    IsSystem = false,
-                    Relation = "payment",
-                    Name = "payment_links",
-                    Value = "The customer is at the heart of our unique business model, which includes design."
-                },
-                new Option
-                {
-                    Name = "Copyright",
-                    Value = "All rights reserved | My Fashion Store",
-                    Relation = "footer",
-                    Order = 1,
-                    IsSystem = true
-                },
-                new Option()
-                {
-                    IsSystem = false,
-                    Name = "shopping_title",
-                    Value = "Shopping",
-                    Relation = "shopping",
-                    Order = 1
-                },
-                new Option()
-                {
-                    IsSystem = false,
-                    Name = "Clothing Store",
-                    Value = "Clothing Store",
-                    Relation = "shopping_menu",
-                    Order = 1
-                },
-                new Option()
-                {
-                    IsSystem = false,
-                    Name = "Trending Shoes",
-                    Value = "Trending Shoes",
-                    Relation = "shopping_menu",
-                    Order = 2
-                },
-                new Option()
-                {
-                    IsSystem = false,
-                    Name = "Accessories",
-                    Value = "Accessories",
-                    Relation = "shopping_menu",
-                    Order = 3
-                },
-                new Option()
-                {
-                    IsSystem = false,
-                    Name = "Sale",
-                    Value = "Sale",
-                    Relation = "shopping_menu",
-                    Order = 4
-                },
-                new Option()
-                {
-                    IsSystem = false,
-                    Name = "Contact Us",
-                    Value = "Contact Us",
-                    Relation = "shopping_support_menu",
-                    Order = 1
-                },
-                new Option()
-                {
-                    IsSystem = false,
-                    Name = "Payment Methods",
-                    Value = "Payment Methods",
-                    Relation = "shopping_support_menu",
-                    Order = 2
-                },
-                new Option()
-                {
-                    IsSystem = false,
-                    Name = "Delivery",
-                    Value = "Delivery",
-                    Relation = "shopping_support_menu",
-                    Order = 3
-                },
-                new Option()
-                {
-                    IsSystem = false,
-                    Name = "Return & Exchanges",
-                    Value = "Return & Exchanges",
-                    Relation = "shopping_support_menu",
-                    Order = 4
+                    context.Options.Add(option);
                 }
-                
-            };
+            }
+
+            // ================= CORE =================
+
+            AddOptionIfMissing(new Option 
+            { 
+                Name = "title", 
+                Value = "Male Fashion", 
+                Order = 1, 
+                IsSystem = true 
+            });
+
+            AddOptionIfMissing(new Option 
+            { 
+                Name = "logo", 
+                Value = "img/logo.png", 
+                IsSystem = true 
+            });
+
+            AddOptionIfMissing(new Option 
+            { 
+                Name = "description", 
+                Relation = "header", 
+                Value = "Free shipping, 30-day return or refund guarantee.", 
+                IsSystem = false 
+            });
+
+            AddOptionIfMissing(new Option 
+            { 
+                Name = "Sign-in", 
+                Relation = "header__top__links", 
+                Value = "Sign In", 
+                IsSystem = true 
+            });
+
+            AddOptionIfMissing(new Option 
+            { 
+                Name = "FAQ", 
+                Relation = "header__top__links", 
+                Value = "FAQ", 
+                IsSystem = true 
+            });
+
+            AddOptionIfMissing(new Option 
+            { 
+                Name = "Currency", 
+                Value = "Currency", 
+                IsSystem = true 
+            });
+
+            // ================= CURRENCY =================
+
+            AddOptionIfMissing(new Option 
+            { 
+                Name = "USD", 
+                Value = "USD", 
+                Relation = "currency", 
+                Order = 1, 
+                IsSystem = true 
+            });
+
+            AddOptionIfMissing(new Option 
+            { 
+                Name = "EUR", 
+                Value = "EUR", 
+                Relation = "currency", 
+                Order = 2, 
+                IsSystem = true 
+            });
+
+            AddOptionIfMissing(new Option 
+            { 
+                Name = "GBP", 
+                Value = "GBP", 
+                Relation = "currency", 
+                Order = 3, 
+                IsSystem = true 
+            });
+
+            // ================= PAYMENT =================
+
+            AddOptionIfMissing(new Option
+            {
+                Name = "payImage",
+                Relation = "payment",
+                Value = "img/payment.png",
+                IsSystem = true
+            });
+
+            AddOptionIfMissing(new Option
+            {
+                Name = "payment_links",
+                Relation = "payment",
+                Value = "The customer is at the heart of our unique business model, which includes design.",
+                IsSystem = false
+            });
+
+            // ================= SHOPPING BLOCK 1 =================
+
+            AddOptionIfMissing(new Option
+            {
+                Name = "Shopping",
+                Value = "Shopping",
+                Relation = "shopping",
+                Order = 1,
+                IsSystem = false
+            });
+
+            AddOptionIfMissing(new Option
+            {
+                Name = "Clothing Store",
+                Value = "Clothing Store",
+                Relation = "shopping_menu",
+                Order = 1,
+                IsSystem = false
+            });
+
+            AddOptionIfMissing(new Option
+            {
+                Name = "Trending Shoes",
+                Value = "Trending Shoes",
+                Relation = "shopping_menu",
+                Order = 2,
+                IsSystem = false
+            });
+
+            AddOptionIfMissing(new Option
+            {
+                Name = "Accessories",
+                Value = "Accessories",
+                Relation = "shopping_menu",
+                Order = 3,
+                IsSystem = false
+            });
+
+            AddOptionIfMissing(new Option
+            {
+                Name = "Sale",
+                Value = "Sale",
+                Relation = "shopping_menu",
+                Order = 4,
+                IsSystem = false
+            });
+
+            // ================= SHOPPING BLOCK 2 =================
+
+            AddOptionIfMissing(new Option
+            {
+                Name = "Contact Us",
+                Value = "Contact Us",
+                Relation = "shopping_support_menu",
+                Order = 1,
+                IsSystem = false
+            });
+
+            AddOptionIfMissing(new Option
+            {
+                Name = "Payment Methods",
+                Value = "Payment Methods",
+                Relation = "shopping_support_menu",
+                Order = 2,
+                IsSystem = false
+            });
+
+            AddOptionIfMissing(new Option
+            {
+                Name = "Delivery",
+                Value = "Delivery",
+                Relation = "shopping_support_menu",
+                Order = 3,
+                IsSystem = false
+            });
+
+            AddOptionIfMissing(new Option
+            {
+                Name = "Return & Exchanges",
+                Value = "Return & Exchanges",
+                Relation = "shopping_support_menu",
+                Order = 4,
+                IsSystem = false
+            });
+
+            // ================= FOOTER =================
+
+            AddOptionIfMissing(new Option
+            {
+                Name = "Copyright",
+                Value = "All rights reserved | My Fashion Store",
+                Relation = "footer",
+                Order = 1,
+                IsSystem = true
+            });
             
-            context.Options.AddRange(options);
+            // ================= HEADER OPTIONS =================
+
+            AddOptionIfMissing(new Option
+            {
+                Name = "Search",
+                Key = "search_icon",
+                Value = "/img/icon/search.png",
+                Relation = "header_options",
+                Order = 1,
+                IsSystem = false
+            });
+
+            AddOptionIfMissing(new Option
+            {
+                Name = "Wishlist",
+                Key = "wishlist_icon",
+                Value = "/img/icon/heart.png",
+                Relation = "header_options",
+                Order = 2,
+                IsSystem = false
+            });
+
+            AddOptionIfMissing(new Option
+            {
+                Name = "Cart",
+                Key = "cart_icon",
+                Value = "/img/icon/cart.png",
+                Relation = "header_options",
+                Order = 3,
+                IsSystem = false
+            });
+
+            AddOptionIfMissing(new Option
+            {
+                Name = "CartPrice",
+                Key = "cart_price",
+                Value = "0.00",
+                Relation = "header_options",
+                Order = 4,
+                IsSystem = false
+            });
+
             context.SaveChanges();
-        }
-    }
+        }     
 
 
     private static void SeedClientMessages(ClothingShopDbContext context)
@@ -569,206 +642,3 @@ public class DbInitializer
     
     
 }
-// private static void SeedOptions(ClothingShopDbContext context)
-// {
-//     void AddOptionIfMissing(Option option)
-//     {
-//         if (!context.Options.Any(o => o.Name == option.Name))
-//         {
-//             context.Options.Add(option);
-//         }
-//     }
-//
-//     // ================= CORE =================
-//
-//     AddOptionIfMissing(new Option 
-//     { 
-//         Name = "title", 
-//         Value = "Male Fashion", 
-//         Order = 1, 
-//         IsSystem = true 
-//     });
-//
-//     AddOptionIfMissing(new Option 
-//     { 
-//         Name = "logo", 
-//         Value = "img/logo.png", 
-//         IsSystem = true 
-//     });
-//
-//     AddOptionIfMissing(new Option 
-//     { 
-//         Name = "description", 
-//         Relation = "header", 
-//         Value = "Free shipping, 30-day return or refund guarantee.", 
-//         IsSystem = false 
-//     });
-//
-//     AddOptionIfMissing(new Option 
-//     { 
-//         Name = "Sign-in", 
-//         Relation = "header__top__links", 
-//         Value = "Sign In", 
-//         IsSystem = true 
-//     });
-//
-//     AddOptionIfMissing(new Option 
-//     { 
-//         Name = "FAQ", 
-//         Relation = "header__top__links", 
-//         Value = "FAQ", 
-//         IsSystem = true 
-//     });
-//
-//     AddOptionIfMissing(new Option 
-//     { 
-//         Name = "Currency", 
-//         Value = "Currency", 
-//         IsSystem = true 
-//     });
-//
-//     // ================= CURRENCY =================
-//
-//     AddOptionIfMissing(new Option 
-//     { 
-//         Name = "USD", 
-//         Value = "USD", 
-//         Relation = "currency", 
-//         Order = 1, 
-//         IsSystem = true 
-//     });
-//
-//     AddOptionIfMissing(new Option 
-//     { 
-//         Name = "EUR", 
-//         Value = "EUR", 
-//         Relation = "currency", 
-//         Order = 2, 
-//         IsSystem = true 
-//     });
-//
-//     AddOptionIfMissing(new Option 
-//     { 
-//         Name = "GBP", 
-//         Value = "GBP", 
-//         Relation = "currency", 
-//         Order = 3, 
-//         IsSystem = true 
-//     });
-//
-//     // ================= PAYMENT =================
-//
-//     AddOptionIfMissing(new Option
-//     {
-//         Name = "payImage",
-//         Relation = "payment",
-//         Value = "img/payment.png",
-//         IsSystem = true
-//     });
-//
-//     AddOptionIfMissing(new Option
-//     {
-//         Name = "payment_links",
-//         Relation = "payment",
-//         Value = "The customer is at the heart of our unique business model, which includes design.",
-//         IsSystem = false
-//     });
-//
-//     // ================= SHOPPING BLOCK 1 =================
-//
-//     AddOptionIfMissing(new Option
-//     {
-//         Name = "Shopping",
-//         Value = "Shopping",
-//         Relation = "shopping",
-//         Order = 1,
-//         IsSystem = false
-//     });
-//
-//     AddOptionIfMissing(new Option
-//     {
-//         Name = "Clothing Store",
-//         Value = "Clothing Store",
-//         Relation = "shopping_menu",
-//         Order = 1,
-//         IsSystem = false
-//     });
-//
-//     AddOptionIfMissing(new Option
-//     {
-//         Name = "Trending Shoes",
-//         Value = "Trending Shoes",
-//         Relation = "shopping_menu",
-//         Order = 2,
-//         IsSystem = false
-//     });
-//
-//     AddOptionIfMissing(new Option
-//     {
-//         Name = "Accessories",
-//         Value = "Accessories",
-//         Relation = "shopping_menu",
-//         Order = 3,
-//         IsSystem = false
-//     });
-//
-//     AddOptionIfMissing(new Option
-//     {
-//         Name = "Sale",
-//         Value = "Sale",
-//         Relation = "shopping_menu",
-//         Order = 4,
-//         IsSystem = false
-//     });
-//
-//     // ================= SHOPPING BLOCK 2 =================
-//
-//     AddOptionIfMissing(new Option
-//     {
-//         Name = "Contact Us",
-//         Value = "Contact Us",
-//         Relation = "shopping_support_menu",
-//         Order = 1,
-//         IsSystem = false
-//     });
-//
-//     AddOptionIfMissing(new Option
-//     {
-//         Name = "Payment Methods",
-//         Value = "Payment Methods",
-//         Relation = "shopping_support_menu",
-//         Order = 2,
-//         IsSystem = false
-//     });
-//
-//     AddOptionIfMissing(new Option
-//     {
-//         Name = "Delivery",
-//         Value = "Delivery",
-//         Relation = "shopping_support_menu",
-//         Order = 3,
-//         IsSystem = false
-//     });
-//
-//     AddOptionIfMissing(new Option
-//     {
-//         Name = "Return & Exchanges",
-//         Value = "Return & Exchanges",
-//         Relation = "shopping_support_menu",
-//         Order = 4,
-//         IsSystem = false
-//     });
-//
-//     // ================= FOOTER =================
-//
-//     AddOptionIfMissing(new Option
-//     {
-//         Name = "Copyright",
-//         Value = "All rights reserved | My Fashion Store",
-//         Relation = "footer",
-//         Order = 1,
-//         IsSystem = true
-//     });
-//
-//     context.SaveChanges();
-// }     

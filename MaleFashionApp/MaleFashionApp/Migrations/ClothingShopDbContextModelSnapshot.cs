@@ -68,6 +68,52 @@ namespace MaleFashionApp.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("MaleFashionApp.Entities.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Avatar")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CommentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateOfPublished")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsValid")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommentId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("MaleFashionApp.Entities.Form", b =>
                 {
                     b.Property<int>("Id")
@@ -296,6 +342,13 @@ namespace MaleFashionApp.Migrations
                         .HasForeignKey("PostId");
                 });
 
+            modelBuilder.Entity("MaleFashionApp.Entities.Comment", b =>
+                {
+                    b.HasOne("MaleFashionApp.Entities.Comment", null)
+                        .WithMany("Childs")
+                        .HasForeignKey("CommentId");
+                });
+
             modelBuilder.Entity("MaleFashionApp.Entities.Navigate", b =>
                 {
                     b.HasOne("MaleFashionApp.Entities.Navigate", null)
@@ -311,6 +364,11 @@ namespace MaleFashionApp.Migrations
                 });
 
             modelBuilder.Entity("MaleFashionApp.Entities.Category", b =>
+                {
+                    b.Navigation("Childs");
+                });
+
+            modelBuilder.Entity("MaleFashionApp.Entities.Comment", b =>
                 {
                     b.Navigation("Childs");
                 });

@@ -640,5 +640,148 @@ public class DbInitializer
         }
     }
     
+    private static void SeedComments(ClothingShopDbContext context)
+    {
+        void AddCommentIfMissing(Comment comment)
+        {
+            if (!context.Comments.Any(c => c.Id == comment.Id))
+            {
+                context.Comments.Add(comment);
+            }
+        }
+
+        context.Database.OpenConnection();
+        context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Comments ON");
+
+        // Parent comment 1 (Post 1)
+        AddCommentIfMissing(new Comment
+        {
+            Id = 1,
+            PostId = 1,
+            Login = "AlexStyle",
+            Email = "alex@example.com",
+            Message = "Great spring collection! Really like the colors.",
+            IsValid = true,
+            DateOfPublished = DateTime.UtcNow.AddDays(-5)
+        });
+
+        // Child of 1
+        AddCommentIfMissing(new Comment
+        {
+            Id = 2,
+            PostId = 1,
+            Login = "Mike89",
+            Email = "mike@example.com",
+            Message = "Totally agree! пастельні відтінки топ 🔥",
+            IsValid = true,
+            DateOfPublished = DateTime.UtcNow.AddDays(-4),
+            ParentId = 1
+        });
+
+        // Child of 2
+        AddCommentIfMissing(new Comment
+        {
+            Id = 3,
+            PostId = 1,
+            Login = "JohnK",
+            Email = "john@example.com",
+            Message = "Особливо light blue — виглядає дуже свіжо.",
+            IsValid = true,
+            DateOfPublished = DateTime.UtcNow.AddDays(-3),
+            ParentId = 2
+        });
+
+        // Parent comment 2 (Post 2)
+        AddCommentIfMissing(new Comment
+        {
+            Id = 4,
+            PostId = 2,
+            Login = "AnnaFashion",
+            Email = "anna@example.com",
+            Message = "These dresses are stunning 😍",
+            IsValid = true,
+            DateOfPublished = DateTime.UtcNow.AddDays(-4)
+        });
+
+        // Child of 4
+        AddCommentIfMissing(new Comment
+        {
+            Id = 5,
+            PostId = 2,
+            Login = "KateM",
+            Email = "kate@example.com",
+            Message = "Absolutely! I already ordered one.",
+            IsValid = true,
+            DateOfPublished = DateTime.UtcNow.AddDays(-3),
+            ParentId = 4
+        });
+
+        // Parent comment 3 (Post 4)
+        AddCommentIfMissing(new Comment
+        {
+            Id = 6,
+            PostId = 4,
+            Login = "SneakerHead",
+            Email = "sneaker@example.com",
+            Message = "Sneakers look super comfortable.",
+            IsValid = true,
+            DateOfPublished = DateTime.UtcNow.AddDays(-2)
+        });
+
+        // Parent comment 4 (Post 5)
+        AddCommentIfMissing(new Comment
+        {
+            Id = 7,
+            PostId = 5,
+            Login = "LuxuryGuy",
+            Email = "lux@example.com",
+            Message = "Streetwear + luxury is my vibe.",
+            IsValid = true,
+            DateOfPublished = DateTime.UtcNow.AddDays(-2)
+        });
+
+        // Child of 7
+        AddCommentIfMissing(new Comment
+        {
+            Id = 8,
+            PostId = 5,
+            Login = "UrbanStyle",
+            Email = "urban@example.com",
+            Message = "Same here! Oversized jackets are 🔝",
+            IsValid = true,
+            DateOfPublished = DateTime.UtcNow.AddDays(-1),
+            ParentId = 7
+        });
+
+        // Parent comment 5 (Post 7)
+        AddCommentIfMissing(new Comment
+        {
+            Id = 9,
+            PostId = 7,
+            Login = "WinterMan",
+            Email = "winter@example.com",
+            Message = "Perfect jackets for winter season.",
+            IsValid = true,
+            DateOfPublished = DateTime.UtcNow.AddDays(-1)
+        });
+
+        // Parent comment 6 (Post 10)
+        AddCommentIfMissing(new Comment
+        {
+            Id = 10,
+            PostId = 10,
+            Login = "DealHunter",
+            Email = "deal@example.com",
+            Message = "Love the discounts! Waiting for more deals.",
+            IsValid = true,
+            DateOfPublished = DateTime.UtcNow
+        });
+
+        context.SaveChanges();
+
+        context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Comments OFF");
+        context.Database.CloseConnection();
+    }
+    
     
 }

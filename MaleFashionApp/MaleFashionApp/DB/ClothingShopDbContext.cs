@@ -17,6 +17,7 @@ public class ClothingShopDbContext : DbContext
     public DbSet<Tag> Tags { get; set; }
     public DbSet<PostTags> PostTags { get; set; }
     public DbSet<PostCategories> PostCategories { get; set; }
+    public DbSet<Comment> Comments { get; set; }
     
     public ClothingShopDbContext(DbContextOptions<ClothingShopDbContext> options)
         : base(options) 

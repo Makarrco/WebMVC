@@ -115,4 +115,11 @@ public class PostModel
             p.Status == PostStatuses.Published &&
             (p.Title.ToLower().Contains(search) || p.Content.ToLower().Contains(search)));
     }
+
+    public Post? GetPostById(int postId)
+    {
+        return _clothingDbContext.Posts.FirstOrDefault(
+            p => p.Id == postId && p.Status == PostStatuses.Published
+        );
+    }
 }

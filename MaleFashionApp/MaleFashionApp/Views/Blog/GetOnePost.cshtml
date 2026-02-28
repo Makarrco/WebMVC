@@ -6,11 +6,11 @@
 <!-- Hero -->
 <section class="blog-hero spad">
     <div class="container text-center">
-        <h2>@postInfo.Title</h2>
-        <p class="text-muted">
+        <h2 class="fw-bold">@postInfo.Title</h2>
+        <p class="text-muted mb-1">
             @postInfo.Published?.ToString("MMMM dd, yyyy")
         </p>
-        <p>@postInfo.Slogan</p>
+        <p class="fs-5">@postInfo.Slogan</p>
     </div>
 </section>
 
@@ -19,34 +19,120 @@
     <div class="container">
 
         <!-- Image -->
-        <div class="blog__details__pic text-center mb-4">
-            <img src="~/@postInfo.ImgSrc" alt="@postInfo.ImgAlt" class="img-fluid">
+        <div class="blog__details__pic text-center mb-5">
+            <img src="~/@postInfo.ImgSrc" alt="@postInfo.ImgAlt" class="img-fluid rounded shadow-sm">
         </div>
 
         <!-- Content -->
-        <div class="blog__details__text">
+        <div class="blog__details__text mb-4">
             @Html.Raw(postInfo.Content)
         </div>
 
         <!-- Categories -->
-        <div class="mt-4">
+        <div class="mb-3">
             @foreach (var category in postInfo.Categories)
             {
-                <a href="/blog?category=@category.Slug" class="badge badge-light">
+                <a href="/blog?category=@category.Slug" class="badge bg-light text-dark me-2 px-3 py-2 shadow-sm">
                     @category.Title
                 </a>
             }
         </div>
 
         <!-- Tags -->
-        <div class="mt-3">
+        <div class="mb-5">
             @foreach (var tag in postInfo.Tags)
             {
-                <a href="/blog?tag=@tag.Slug" class="tag-item">
+                <a href="/blog?tag=@tag.Slug" class="tag-item text-decoration-none me-3 fs-6 text-primary">
                     #@tag.Title
                 </a>
             }
         </div>
 
+    </div>
+</section>
+
+<!-- Comments Section -->
+<section style="background-color: #f1f3f5;">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10 col-xl-8">
+                <div class="card shadow-sm rounded-3">
+
+                    <!-- Comments Header -->
+                    <div class="card-body border-bottom bg-white text-center">
+                        <h4 class="mb-0 fw-semibold">Comments Section</h4>
+                    </div>
+
+                    <!-- Comments List -->
+                    <div class="card-body" style="background-color: #fafafa;">
+                        <!-- Parent Comment -->
+                        <div class="d-flex mb-4">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar" class="rounded-circle shadow-sm me-3" width="50" height="50" />
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <p class="mb-0 fw-semibold">Maria Smantha <small class="text-muted ms-2">- 2 hours ago</small></p>
+                                    <a href="#!" class="text-primary small text-decoration-none"><i class="fas fa-reply fa-xs me-1"></i>Reply</a>
+                                </div>
+                                <p class="small text-secondary mb-3">
+                                    It is a long established fact that a reader will be distracted by readable content.
+                                </p>
+
+                                <!-- Nested Replies -->
+                                <div class="ms-4">
+                                    <div class="d-flex mb-3">
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(11).webp" alt="avatar" class="rounded-circle shadow-sm me-3" width="40" height="40" />
+                                        <div>
+                                            <p class="mb-0 fw-semibold">Simona Disa <small class="text-muted ms-2">- 1 hour ago</small></p>
+                                            <p class="small text-secondary mb-0">
+                                                Letters, as opposed to using 'Content here', making it look readable.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(12).webp" alt="avatar" class="rounded-circle shadow-sm me-3" width="40" height="40" />
+                                        <div>
+                                            <p class="mb-0 fw-semibold">John Smith <small class="text-muted ms-2">- 30 mins ago</small></p>
+                                            <p class="small text-secondary mb-0">
+                                                Another nested reply example.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Another Parent Comment -->
+                        <div class="d-flex">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(13).webp" alt="avatar" class="rounded-circle shadow-sm me-3" width="50" height="50" />
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <p class="mb-0 fw-semibold">Natalie Smith <small class="text-muted ms-2">- 3 hours ago</small></p>
+                                    <a href="#!" class="text-primary small text-decoration-none"><i class="fas fa-reply fa-xs me-1"></i>Reply</a>
+                                </div>
+                                <p class="small text-secondary mb-0">
+                                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Comment Form -->
+                    <div class="card-body bg-white">
+                        <h4 class="text-center mb-4 fw-semibold">Add a Comment</h4>
+                        <div class="d-flex mb-3">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" class="rounded-circle shadow-sm me-3" width="50" height="50" />
+                            <div class="form-outline w-100">
+                                <textarea class="form-control" id="newComment" rows="3" placeholder="Write a comment..." style="background: #fff;"></textarea>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <button type="button" class="btn btn-primary btn-sm me-2">Post comment</button>
+                            <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
+                        </div>
+                    </div>
+
+                </div> <!-- End Card -->
+            </div>
+        </div>
     </div>
 </section>

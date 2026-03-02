@@ -55,7 +55,7 @@
 <section style="background-color: #f1f3f5;">
     <div class="container py-5">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10 col-xl-8">
+            <div class="col-md-12">
                 <div class="card shadow-sm rounded-3">
 
                     <!-- Comments Header -->
@@ -117,17 +117,36 @@
                     </div>
 
                     <!-- Add Comment Form -->
-                    <div class="card-body bg-white">
-                        <h4 class="text-center mb-4 fw-semibold">Add a Comment</h4>
-                        <div class="d-flex mb-3">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" class="rounded-circle shadow-sm me-3" width="50" height="50" />
-                            <div class="form-outline w-100">
-                                <textarea class="form-control" id="newComment" rows="3" placeholder="Write a comment..." style="background: #fff;"></textarea>
-                            </div>
-                        </div>
-                        <div class="text-end">
-                            <button type="button" class="btn btn-primary btn-sm me-2">Post comment</button>
-                            <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
+                    <div class="card shadow-sm">
+                        <div class="card-body bg-white">
+                            <h4 class="text-center mb-4 fw-semibold">Contact Form</h4>
+
+                            <form>
+                                <div class="row">
+                                    <!-- Login -->
+                                    <div class="col-md-6 mb-3">
+                                        <label for="login" class="form-label">Login</label>
+                                        <input type="text" class="form-control" id="login" placeholder="Enter login">
+                                    </div>
+
+                                    <!-- Email -->
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                    </div>
+                                </div>
+
+                                <!-- Message full width -->
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="4" placeholder="Write your message..."></textarea>
+                                </div>
+
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary">Send</button>
+                                    <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
 

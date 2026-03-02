@@ -3927,4 +3927,7 @@ ol {
 	.categories__text:before {
 		height: 250px;
 	}
+	.one-post-id {
+		display: none;
+	}
 }

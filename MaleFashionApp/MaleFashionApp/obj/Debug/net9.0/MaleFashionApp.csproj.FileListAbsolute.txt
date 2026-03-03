@@ -190,4 +190,4 @@ D:\Rider\MaleFashionApp\MaleFashionApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysi
 D:\Rider\MaleFashionApp\MaleFashionApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\Rider\MaleFashionApp\MaleFashionApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\35csrwquw6-jnrbwrzjfn.gz
-D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\v0ddmey8k6-din0h3e98l.gz
+D:\Rider\MaleFashionApp\MaleFashionApp\obj\Debug\net9.0\compressed\v0ddmey8k6-29ow95zu2o.gz

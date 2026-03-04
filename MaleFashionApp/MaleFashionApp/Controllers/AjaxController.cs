@@ -1,4 +1,5 @@
-﻿using System.Text.Encodings.Web;
+﻿using System.Diagnostics;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using MaleFashionApp.DB;
 using MaleFashionApp.Dto;
@@ -70,6 +71,38 @@ public class AjaxController : Controller
         }
 
         return JsonSerializer.Serialize(jsonResponse, options);
+    }
+
+    [HttpPost]
+    public string SaveComment(int postId, string login, string email, string message, int? parentId)
+    {
+        JsonResponse jsonResponse = new JsonResponse()
+        {
+            Code = 200,
+        };
+        JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions();
+        jsonSerializerOptions.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+        
+        if (_commentModel.SaveComment(new Comment()
+        {
+            PostId = postId,
+            Login = login,
+            Email = email,
+            Message = message,
+            ParentId = parentId
+        }) == true)
+        {
+            jsonResponse.Status = StatusResponse.Success;
+            jsonResponse.Message = "Comment saved";
+            return JsonSerializer.Serialize(jsonResponse, jsonSerializerOptions);
+            
+        }
+        else
+        {
+            jsonResponse.Status = StatusResponse.Success;
+            jsonResponse.Message = "Comment NOT saved";
+            return JsonSerializer.Serialize(jsonResponse, jsonSerializerOptions);
+        }
     }
 }
 

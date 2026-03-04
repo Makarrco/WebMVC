@@ -32,4 +32,10 @@ public class CommentModel
 
         return comments.Where(c => c.ParentId == null).ToList();
     }
+
+    public bool SaveComment(Comment comment)
+    {
+        _clothingDbContext.Comments.Add(comment);
+        return _clothingDbContext.SaveChanges() == 1 ? true : false;
+    }
 }

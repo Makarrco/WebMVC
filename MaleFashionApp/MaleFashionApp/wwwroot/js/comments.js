@@ -6,6 +6,8 @@
         let postId = $('.one-post-id').text();
         let message = { };
         let currentParentId = null;
+        let $replyInfo = $('.reply-info');
+        let $replyCommentId = $('.reply-comment-id');
         
         let getOneComment = (oneComm) => {
             
@@ -15,7 +17,7 @@
                     <div class="d-flex mb-4">
                         <img src="${oneComm.Avatar}" 
                              alt="avatar" 
-                             class="class="rounded-circle shadow-sm me-4""
+                             class="rounded-circle shadow-sm me-4"
                              width="45" height="45" />
                         <p class="one-comment-id">${oneComm.Id}</p>     
                         
@@ -75,10 +77,14 @@
                         </div>
                     </div>
                 </div>`).join('');
-
-            return childComm;
         }
         
+        let resetReply = () => {
+            currentParentId = null;
+            $replyInfo.addClass('d-none');
+            $replyCommentId.text('');
+        };
+                
         
         
         let renderComments = (comments, $parent) => {
@@ -91,11 +97,31 @@
                     .first()
                     .text()
                     .trim();
+                $('html, body').animate({
+                    scrollTop: $('.send-message-form').offset().top - 100
+                }, 300);
+                if (parentId === currentParentId) {
+                    resetReply();
+                    return;
+                }
                 currentParentId = parentId;
+                
+                $replyCommentId.text(parentId);
+                $replyInfo.removeClass('d-none');
+                
                 console.log("Replying to:", currentParentId);
             })
+            $('.cancel-reply').on('click', (e) => {
+                e.preventDefault();
+                resetReply();
+            });
             
         }
+
+        $('.send-message-form').on('reset', () => {
+            resetReply();
+            $('.form-result').removeClass().text('');
+        });
 
         let validateForm = (login, email, messageText) => {
             let errors = [];
@@ -178,7 +204,7 @@
                             $loginField.val('');
                             $emailField.val('');
                             $messageField.val('');
-                            currentParentId = null;
+                            resetReply();
 
                         } else {
 

@@ -1,4 +1,5 @@
 using MaleFashionApp.DB;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 
@@ -10,6 +11,13 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ClothingShopDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ClothingShopDbConnection")));
     
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
+    option =>
+    {
+        option.LoginPath = new PathString("/Account/Login");
+        option.AccessDeniedPath = new PathString("/Error/AccessDenied");
+    }
+    );
 
 var app = builder.Build();
 
@@ -31,6 +39,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();

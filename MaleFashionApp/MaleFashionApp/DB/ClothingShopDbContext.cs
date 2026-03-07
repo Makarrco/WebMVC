@@ -19,6 +19,8 @@ public class ClothingShopDbContext : DbContext
     public DbSet<PostCategories> PostCategories { get; set; }
     public DbSet<Comment> Comments { get; set; }
     
+    public DbSet<User> Users { get; set; }
+    
     public ClothingShopDbContext(DbContextOptions<ClothingShopDbContext> options)
         : base(options) 
     {

@@ -1,5 +1,6 @@
 ﻿using MaleFashionApp.Entities;
 using Microsoft.EntityFrameworkCore;
+using WebApp.Helpers;
 
 namespace MaleFashionApp.DB;
 
@@ -11,6 +12,7 @@ public class DbInitializer
         {
             context.Database.EnsureCreated();
         }
+        //context.Database.Migrate();
 
         SeedClientMessages(context);
         SeedNavigates(context);
@@ -22,6 +24,17 @@ public class DbInitializer
         SeedPostCategories(context);
         SeedPostTags(context);    
         SeedComments(context); 
+        SeedUsers(context);
+    }
+
+    private static void SeedUsers(ClothingShopDbContext context)
+    {
+        if (!context.Users.Any(u => u.Email == "admin@gmail.com"))
+        {
+            
+            context.Users.AddRange(new User() { Username="Admin", Email="admin@gmail.com", PasswordHash = SecurePasswordHasher.Hash("admin1") });
+            context.SaveChanges();
+        }
     }
 
     private static void SeedPosts(ClothingShopDbContext context)

@@ -41,7 +41,7 @@ public class AboutController : Controller
             }
             else
             {
-                return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+                return View();
                 
             }
         } else {

@@ -27,6 +27,7 @@
 
     <ItemGroup>
       <Folder Include="wwwroot\account\" />
+      <Folder Include="wwwroot\admin\" />
     </ItemGroup>
 
 </Project>

@@ -10,7 +10,7 @@ public class Option
     
     public string Value { get; set; } = string.Empty;
     
-    public string Relation { get; set; } = string .Empty;
+    public string? Relation { get; set; } = string .Empty;
     
     public int Order { get; set; }
 

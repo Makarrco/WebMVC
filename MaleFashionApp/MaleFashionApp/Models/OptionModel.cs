@@ -126,8 +126,11 @@ public class OptionModel
     {
         return _clothingDbContext.Options.Where(o => o.Relation == "header-bar-option").OrderBy(o => o.Order).ToList();
     }
-    
-    
+
+    public IEnumerable<Option> GetAllOptions()
+    {
+        return _clothingDbContext.Options.OrderBy(o => o.Order).ToList();
+    }
 
     
     

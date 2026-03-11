@@ -203,7 +203,6 @@ namespace MaleFashionApp.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Relation")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Value")

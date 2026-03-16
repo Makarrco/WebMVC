@@ -30,4 +30,9 @@ public class CategoryModel
             BuildCategoryTree(childCat);
         }
     }
+
+    public List<Category> GetAllCategories()
+    {
+        return _clothingDbContext.Categories.ToList();
+    }
 }
